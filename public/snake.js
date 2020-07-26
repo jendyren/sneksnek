@@ -41,7 +41,7 @@ function displayScore() {
 
 class Snake {
   constructor() {
-    this.size = 10;
+    this.size = 1;
     this.x = round(width/20);
     this.y = round(height/10 - 1);
     this.dir = createVector(0,-1);
@@ -61,7 +61,7 @@ class Snake {
   show() {
     stroke(240, 100, 100)
     noFill()
-    rect(this.x*10, this.y*10, this.size)
+    rect(this.x*10, this.y*10, this.size*10)
     noStroke()
     for (let i = 0; i < this.tail.length; i++) {
       this.tail[i].showSelf()
@@ -107,18 +107,18 @@ class TailSegment {
     this.x = x;
     this.y = y;
     this.c = c;
-    this.size = 10;
+    this.size = 1;
   }
   showSelf() {
     fill(this.c);
-    rect(this.x*10, this.y*10, this.size);
+    rect(this.x*10, this.y*10, this.size*10);
   }
 }
 
 class Apple {
   constructor(n) {
     this.place();
-    this.size = 10;
+    this.size = 1;
     this.isBad = n;
     if(this.isBad) this.c = color(120,80,80);
     else this.c = color(0,80,80)
@@ -135,7 +135,7 @@ class Apple {
   }
   show() {
     fill(this.c)
-    rect(this.x*10, this.y*10, this.size)
+    rect(this.x*10, this.y*10, this.size*10)
   }
 }
 
@@ -143,11 +143,11 @@ class Obstacle{
   constructor(){
     this.x = round(random(width/10-1))
     this.y = round(random(height/10-1))
-    this.size = 10
+    this.size = 1
   }
   show(){
     fill(70);
-    rect(this.x*10, this.y*10, this.size);
+    rect(this.x*10, this.y*10, this.size*10);
   }
 }
 
