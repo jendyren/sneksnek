@@ -1,0 +1,70 @@
+html, body{
+  font-family: 'Ubuntu', sans-serif;
+  background-image: url('https://cdn.discordapp.com/attachments/734483808950288414/736644361600893088/space.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover; 
+  color: white;
+}
+
+h3{
+  font-weight: 400;
+}
+
+input{
+  font-family: 'Ubuntu', sans-serif;
+  border-radius: 4px;
+  padding: 4px 10px;
+}
+
+button{
+  font-family: 'Ubuntu', sans-serif;
+  border-radius: 4px;
+  font-size: 14pt;
+  padding: 4px 10px;
+  background-color: aqua;
+}
+
+button:hover{
+  font-family: 'Ubuntu', sans-serif;
+  border-radius: 4px;
+  font-size: 14pt;
+  padding: 4px 10px;
+  background-color: rgb(129, 255, 255);
+}
+
+.container{
+  display: flex;
+  margin-bottom: 10%;
+  margin-left: 3%;
+  margin-right: 3%;
+  
+}
+
+.key{
+  width: 50%;
+  display: flex;
+}
+
+.snek-content{
+  text-align: center;
+  margin-top: 4%;
+
+  width: 45%;
+  font-size: 1.1em;
+}
+
+.title{
+  
+}
+
+.title h1{
+  margin: 0px;
+  font-weight: 500;
+  font-size: 3.5em;
+}
+
+.divider{
+  margin-top: 5%;
+  margin-bottom:5%;
+}
