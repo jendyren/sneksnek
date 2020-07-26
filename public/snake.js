@@ -16,11 +16,11 @@ function setup() {
 
 function draw(){
   background(backgroundColor)
-  // The snake performs the following four methods:
+
   playerSnake.move();
   playerSnake.checkCollisions()
   playerSnake.checkApples()
-  // The apple needs fewer methods to show up on screen.
+
   for(let o of obstacles)
     o.show();
   
@@ -29,13 +29,9 @@ function draw(){
   
   goodApple.show()
   badApples[0].show()
-  // We put the score in its own function for readability.
-  displayScore()
-}
-function displayScore() {
+
   fill(0)
   text(`Score: ${score}`, 20, 20)
-  text(`High score: ${highScore}`, 20, 40)
 }
 
 
@@ -76,7 +72,7 @@ class Snake {
         ba.place();
   }
   collideApple(a){
-    if (collideRectRect(this.x, this.y, this.size, this.size, a.x, a.y, a.size, a.size)) {
+    if (collideRectRect(this.x, this.y, this.size-0.1, this.size-0.1, a.x, a.y, a.size-0.1, a.size-0.1)) {
       if(a.isBad) score -= 2;
       else{
         score += 1
@@ -93,7 +89,7 @@ class Snake {
         if (this.x == this.tail[i].x && this.y == this.tail[i].y)
           gameOver();
     for(let o of obstacles)
-      if(collideRectRect(this.x, this.y, this.size, this.size, o.x, o.y, o.sizeX, o.sizeY))
+      if(collideRectRect(this.x, this.y, this.size-0.1, this.size-0.1, o.x, o.y, o.size-0.1, o.size-0.1))
         gameOver();
   }
   extendTail() {
@@ -128,7 +124,7 @@ class Apple {
     this.x = round(random(width/10- 1))
     this.y = round(random(height/10 - 1))
     for(let o of obstacles)
-      if(collideRectRect(this.x,this.y, this.size, this.size, o.x, o.y, o.sizeX, o.sizeY)){
+      if(collideRectRect(this.x,this.y, this.size-0.1, this.size-0.1, o.x, o.y, o.size-0.1, o.size-0.1)){
         this.x = round(random(width/10 - 1))
         this.y = round(random(height/10 - 1))
       }
@@ -144,6 +140,30 @@ class Obstacle{
     this.x = round(random(width/10-1))
     this.y = round(random(height/10-1))
     this.size = 1
+  }
+  place(){
+    this.x = round(random(width/10-1))
+    this.y = round(random(height/10-1))
+    while(collideRectRect(this.x,this.y, this.size-0.1, this.size-0.1, goodApple.x, goodApple.y, goodApple.size-0.1, goodApple.size-0.1)){
+      this.x = round(random(width/10-1))
+      this.y = round(random(height/10-1))
+    }
+    for(ba of badApples){
+      while(collideRectRect(this.x,this.y, this.size-0.1, this.size-0.1, ba.x, ba.y, ba.size-0.1, ba.size-0.1)){
+        this.x = round(random(width/10-1))
+        this.y = round(random(height/10-1))
+      }
+    }
+    for(t of playerSnake.tail){
+      while(collideRectRect(this.x,this.y, this.size-0.1, this.size-0.1, t.x, t.y, t.size-0.1, t.size-0.1)){
+        this.x = round(random(width/10-1))
+        this.y = round(random(height/10-1))
+      }
+    }
+    while(collideRectRect(this.x,this.y, this.size-0.1, this.size-0.1, playerSnake.x, playerSnake.y, playerSnake.size-0.1, playerSnake.size-0.1)){
+      this.x = round(random(width/10-1))
+      this.y = round(random(height/10-1))
+    }
   }
   show(){
     fill(70);

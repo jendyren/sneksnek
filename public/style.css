@@ -69,7 +69,16 @@ button:hover{
   margin-bottom:5%;
 }
 
+.key {
+  margin-top: 4%;
+	display: flex;
+	flex-direction: column;
+}
+
 .key-row {
 	display: flex;
-	jus
+}
+.key-square {
+	width: 6vmin;
+	height: 6vmin;
 }

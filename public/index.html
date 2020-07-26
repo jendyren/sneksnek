@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="/socket.io/socket.io.js"></script>
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
 		<script src='snake.js' defer></script>
 
 
@@ -35,20 +36,22 @@
     </div>
     -->
     
-    <div class = "container">
+    <div class="container">
       <div class="key">
         <!-- INSERT KEY PHOTO/THINGY HERE-->
 				<div class='key-row'>
-					<div id='key-square'></div>
-					<p>Red apple: +1 points, gain length
+					<img class='key-square' src='https://www.americasfinestlabels.com/includes/work/image_cache/a4cb211cac7697694b91b494f3620ca4.thumb.jpg'>
+					<p> 🍎  Red apple: +1 points, gain length (sneck)</p>
 				</div>
 				<div class='key-row'>
-					<div id='key-square'></div>
-					Poison apple: -1 points
+					<div id='key-square' style='background-color: green'></div>
+         
+					<p> 🍏  Poison apple: -1 points, lose length (blech)</p>
 				</div>
 				<div class='key-row'>
-					<div id='key-square'></div>
-					Wall: Immediate Death
+					<div id='key-square' style='background-color: grey'></div>
+          
+					<p> ☠️ Wall: Immediate Death (wrek)</p>
 				</div>
       </div>
       <div class="snek-content">
