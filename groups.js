@@ -19,23 +19,26 @@ module.exports = (http) => {
 			this.id = id;
 			this.players = sockets;
 		}
-		start(){
-			io.in(this.id).emit('starting', this.names);
-		}
 		addBlock(socket){
+			console.log('sending wall');
 			let rn = Math.floor(Math.random() * this.players.length);
 			if (rn == this.players.indexOf(socket)) rn = (rn+1) % this.players.length;
-			this.players[rn].emit('addBlock');
+			io.to(this.players[rn].id).emit('addBlock');
 		}
 		addPoisonApple(socket){
+			console.log('sending poison apple');
 			let rn = Math.floor(Math.random() * this.players.length);
 			if (rn == this.players.indexOf(socket)) rn = (rn+1) % this.players.length;
-			this.players[rn].emit('addPoisonApple');
+			io.to(this.players[rn].id).emit('addPoisonApple');
 		}
 		died(socket){
 			let ind = this.players.indexOf(socket);
 			this.players.splice(ind, 1);
 			io.in(this.id).emit('players', this.players.length);
+
+			if (this.players.length <= 1){
+				io.in(this.id).emit('gameOver', this.players.length);
+			}
 		}
 	}
 
@@ -58,7 +61,8 @@ module.exports = (http) => {
 					s.join(roomId);
 					stor[s.id] = roomId;
 				}
-				rooms[roomId].start();
+				console.log('starting');
+				io.in(roomId).emit('starting', rooms[roomId].players.length);
 			}
 		});
 
@@ -82,7 +86,7 @@ module.exports = (http) => {
 				let group = stor[socket.id];
 				socket.leave(group);
 				ind = rooms[group].players.indexOf(socket);
-				delete rooms[group].players[ind];
+				if (ind >= 0) delete rooms[group].players[ind];
 				if (rooms[group].players.length == 0) delete rooms[group];
 				delete stor[socket.id];
 			}
