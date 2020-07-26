@@ -74,11 +74,16 @@ button:hover{
 	display: flex;
 	flex-direction: column;
 }
+.key p {
+	font-size: 1.5em;
+}
 
 .key-row {
 	display: flex;
+	align-items: center;
 }
 .key-square {
 	width: 6vmin;
 	height: 6vmin;
+	margin-right: 1em;
 }

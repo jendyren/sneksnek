@@ -1,3 +1,5 @@
+var socket = io();
+
 let backgroundColor, playerSnake, currentApple, badApple, score, obstacles, highScore;
 
 
